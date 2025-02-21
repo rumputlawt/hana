@@ -10,6 +10,11 @@ import {
 	InteractionResponseType,
 	InteractionType,
 } from "@discordjs/core";
+import { type CommandResponse, findCommand } from "~/utils/command.ts";
+import {
+	isSlashCommandInteraction,
+	replyInteraction,
+} from "~/utils/interaction.ts";
 
 export const handler = define.handlers({
 	async POST(ctx) {
@@ -39,6 +44,25 @@ export const handler = define.handlers({
 				const interaction: APIInteraction = JSON.parse(body);
 
 				switch (interaction.type) {
+					case InteractionType.ApplicationCommand: {
+						let response: CommandResponse = replyInteraction({
+							content: "invalid command",
+						});
+
+						if (isSlashCommandInteraction(interaction)) {
+							const slashCommand = await findCommand(
+								ctx.config.mode,
+								interaction.data.name,
+								interaction.data.type,
+							);
+
+							if (slashCommand) {
+								response = slashCommand.execute(interaction);
+							}
+						}
+
+						return Response.json(response);
+					}
 					case InteractionType.Ping: {
 						const response: APIInteractionResponsePong = {
 							type: InteractionResponseType.Pong,

@@ -1,6 +1,6 @@
-import { Command } from "~/utils/command.ts";
+import { type Command } from "~/utils/command.ts";
 import { walk } from "@std/fs/walk";
-import { Mode } from "fresh";
+import { type Mode } from "fresh";
 
 export async function build(mode: Mode) {
 	const commandFiles = await Array.fromAsync(walk("./commands", {
