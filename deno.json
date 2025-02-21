@@ -22,11 +22,13 @@
 		"useTabs": true
 	},
 	"exclude": [
-		"**/_fresh/*"
+		"**/_fresh/*",
+		"**/.vscode/*"
 	],
 	"imports": {
 		"@discordjs/core": "npm:@discordjs/core@^2.0.1/http-only",
 		"@std/encoding": "jsr:@std/encoding@^1.0.7",
+		"@std/fs": "jsr:@std/fs@^1.0.13",
 		"@std/http": "jsr:@std/http@^1.0.13",
 		"tweetnacl": "npm:tweetnacl@^1.0.3",
 		"~/": "./",

@@ -29,6 +29,8 @@ interface BaseCommand<
 	execute: (interaction: Interaction) => CommandResponse;
 }
 
+export type Command = ReturnType<typeof slashCommand>;
+
 export type CommandResponse =
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
