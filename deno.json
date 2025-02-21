@@ -1,0 +1,61 @@
+{
+	"tasks": {
+		"check": "deno check **/*.ts && deno check **/*.tsx && deno fmt --check && deno lint",
+		"dev": "deno run -A --watch=static/,routes/ --env dev.ts",
+		"build": "deno run -A dev.ts build",
+		"start": "deno run -A main.ts",
+		"update": "deno run -A -r jsr:@fresh/update ."
+	},
+	"lint": {
+		"rules": {
+			"include": [
+				"no-console"
+			],
+			"tags": [
+				"fresh",
+				"recommended"
+			]
+		}
+	},
+	"fmt": {
+		"indentWidth": 4,
+		"useTabs": true
+	},
+	"exclude": [
+		"**/_fresh/*"
+	],
+	"imports": {
+		"@discordjs/core": "npm:@discordjs/core@^2.0.1/http-only",
+		"@std/encoding": "jsr:@std/encoding@^1.0.7",
+		"@std/http": "jsr:@std/http@^1.0.13",
+		"tweetnacl": "npm:tweetnacl@^1.0.3",
+		"~/": "./",
+		"fresh": "jsr:@fresh/core@^2.0.0-alpha.29",
+		"@fresh/plugin-tailwind": "jsr:@fresh/plugin-tailwind@^0.0.1-alpha.7",
+		"preact": "npm:preact@^10.25.4",
+		"@preact/signals": "npm:@preact/signals@^2.0.1",
+		"tailwindcss": "npm:tailwindcss@^3.4.3"
+	},
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"dom.asynciterable",
+			"dom.iterable",
+			"deno.ns",
+			"deno.unstable"
+		],
+		"jsx": "precompile",
+		"jsxImportSource": "preact",
+		"jsxPrecompileSkipElements": [
+			"a",
+			"img",
+			"source",
+			"body",
+			"html",
+			"head"
+		]
+	},
+	"unstable": [
+		"kv"
+	]
+}
