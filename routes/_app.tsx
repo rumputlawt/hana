@@ -13,7 +13,9 @@ export default define.page(({ Component }) => {
 				<link rel="stylesheet" href="/styles.css" />
 			</head>
 			<body>
-				<Component />
+				<div class="h-dvh font-[Poppins]">
+					<Component />
+				</div>
 			</body>
 		</html>
 	);
