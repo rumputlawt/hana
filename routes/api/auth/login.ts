@@ -25,7 +25,7 @@ export const handler = define.handlers({
 				env("DISCORD_GUILD_ID", true),
 			);
 
-			const expireAt = (Math.floor(Date.now()) / 1000) + 60 * 60;
+			const expireAt = Math.floor(Date.now() / 1000) + 60 * 60;
 			const jwt = await encode(
 				{ ...member, exp: expireAt },
 				env("JWT_KEY", true),
@@ -35,7 +35,7 @@ export const handler = define.handlers({
 			setCookie(headers, {
 				name: "access_token",
 				value: jwt,
-				expires: Math.floor(Date.now()) + (expireAt * 1_000),
+				expires: expireAt * 1_000,
 				httpOnly: true,
 				path: "/",
 			});
