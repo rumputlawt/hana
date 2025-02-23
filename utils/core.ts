@@ -1,10 +1,11 @@
 import { createDefine } from "fresh";
 import { env } from "~/utils/env.ts";
-import { API } from "@discordjs/core";
+import { API, type APIGuildMember } from "@discordjs/core";
 import { REST } from "@discordjs/rest";
 
-// deno-lint-ignore no-empty-interface
-export interface State {}
+export interface State {
+	member?: APIGuildMember;
+}
 
 export const define = createDefine<State>();
 export const kv = await Deno.openKv();

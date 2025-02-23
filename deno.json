@@ -28,6 +28,7 @@
 	"imports": {
 		"@discordjs/core": "npm:@discordjs/core@^2.0.1/http-only",
 		"@discordjs/rest": "npm:@discordjs/rest@2.4.2",
+		"@gz/jwt": "jsr:@gz/jwt@^0.1.0",
 		"@std/encoding": "jsr:@std/encoding@^1.0.7",
 		"@std/fs": "jsr:@std/fs@^1.0.13",
 		"@std/http": "jsr:@std/http@^1.0.13",
